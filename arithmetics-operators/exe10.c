@@ -6,7 +6,7 @@ b) returnează valoarea acestui număr cu biții din fiecare nibble în ordine
 
 #include <stdio.h>
 
-void afisare(unsigned int x);
+void print_bits(unsigned int x);
 
 unsigned int inverseAllNibbles(unsigned int number);
 
@@ -16,20 +16,20 @@ unsigned int reverseNibblesBits(unsigned int number);
 int main()
 {
     unsigned int number = 123473;
-    afisare(number);
+    print_bits(number);
 
     printf("\nInversed nibbles:\n");
-    afisare(inverseAllNibbles(number));
+    print_bits(inverseAllNibbles(number));
 
     printf("\nInverse nibbles with reversed bits of nibbles:\n");
-    afisare(reverseNibblesBits(number));
+    print_bits(reverseNibblesBits(number));
 
     reverseNibble(7);
 
     return 0;
 }
 
-void afisare(unsigned int x)
+void print_bits(unsigned int x)
 {
     for (int j = 1, i = sizeof(x) * 8 - 1; i >= 0; i--, j++)
     {
@@ -57,13 +57,13 @@ unsigned int inverseAllNibbles(unsigned int number)
 unsigned int reverseNibblesBits(unsigned int number)
 {
     unsigned container = 0;
-    afisare(container);
+    print_bits(container);
     for (int i = 7; i >= 0; i--)
     {
         container |= reverseNibble((number >> 4 * i) & 15);
         if (i > 0)
             container <<= 4;
-        afisare(container);
+        print_bits(container);
     }
 
     return container;

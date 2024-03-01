@@ -7,7 +7,7 @@ int checker(char input[][30], char container[][30], int index);
 
 int main()
 {
-    char nume[10][30], container[10][30];
+    char name[10][30], container[10][30];
     unsigned short n;
 
     printf("n = ");
@@ -15,25 +15,25 @@ int main()
 
     getchar();
 
-    read(nume, n);
-    print(nume, n);
+    read(name, n);
+    print(name, n);
 
     for (int i = 0; i < n; i++)
     {
         
-        if (checker(nume, container, i))
+        if (checker(name, container, i))
         {
             int count = 0;
 
             for (size_t j = i; j < n; j++)
             {
-                if (!strcmp(nume[i], nume[j]))
+                if (!strcmp(name[i], name[j]))
                 {
                     count++;
                 }
             }
 
-            printf("%s -> %i\n", nume[i], count);
+            printf("%s -> %i\n", name[i], count);
         }
         
     }

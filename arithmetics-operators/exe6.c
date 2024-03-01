@@ -2,8 +2,8 @@
 
 void main()
 {
-    int numar;
-    scanf("%i", &numar);
+    int number;
+    scanf("%i", &number);
 
-    printf("bitul de semn: %i", (numar >> ((sizeof(numar) * 8) - 1) & 1));
+    printf("Signed bit is: %i\n", (number >> ((sizeof(number) * 8) - 1) & 1));
 }

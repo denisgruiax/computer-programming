@@ -2,51 +2,49 @@
 #include <stdio.h>
 
 char isCaracter(char x);
-void solve(char sir[100]);
-void afisare(char sir[100]);
+void solve(char text[100]);
+void display(char text[100]);
 
 void main()
 {
-    char sir[100];
+    char text[100];
 
-    printf("Introduceti textul: ");
-    gets(sir);
+    printf("Insert the text: ");
+    gets(text);
 
-    solve(sir);
-    afisare(sir);
+    solve(text);
+    display(text);
 }
 
 char isCaracter(char x)
 {
     if ((x >= 'a') && (x <= 'z'))
         return 1;
+    
     if ((x >= 'A') && (x <= 'Z'))
         return 1;
+
     return 0;
 }
 
-void solve(char sir[100])
+void solve(char text[100])
 {
     int holder = 1;
-    for (unsigned long i = 0; sir[i] != '\0'; i++)
+    for (unsigned long i = 0; text[i] != '\0'; i++)
     {
-        if (isCaracter(sir[i]) && holder)
+        if (isCaracter(text[i]) && holder)
         {
-            sir[i] = toupper(sir[i]);
+            text[i] = toupper(text[i]);
             holder = 0;
         }
 
-        if (!isCaracter(sir[i]) && !holder)
-        {
+        if (!isCaracter(text[i]) && !holder)
             holder = 1;
-        }
     }
 }
 
-void afisare(char sir[100])
+void display(char text[100])
 {
-    for (unsigned i = 0; sir[i] != '\0'; i++)
-    {
-        putchar(sir[i]);
-    }
+    for (unsigned i = 0; text[i] != '\0'; i++)
+        putchar(text[i]);
 }

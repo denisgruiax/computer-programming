@@ -3,35 +3,32 @@
 
 void main()
 {
-    int t1, t2;
-    unsigned char a, b;  //deoarece numerele a si b vor fi intotdeauna intre 1 si 9 vor fi pe 4 biti doar
-    unsigned char numar; //are doar 8 biti
+    int t1 = 0, t2 = 0;
+    unsigned char a = 0, b = 0;  //variables 'a' and 'b' must be maximum on 4 bits
+    unsigned char number = 0; //variable 'number' has maximum 8 bits
 
     printf("a = ");
     scanf("%i", &t1);
 
     printf("b = ");
-    scanf("%i", &t2); //se putea folosi %hhu pente unsigned char dar are bug-uri
+    scanf("%i", &t2); //for unsigned char we could use %hhu but it has some bugs
     
     a |= t1;
     b |= t2;
 
-    numar |= a;  //stocam pe primii 4 biti numarul a
-    numar <<= 4; //mutam cei 4 biti pe pe pozitiile 4 5 6 7
-    numar |= b;  //stocam cei 4 biti ai lui b pe primii 4 biti
+    number |= a;  //storeing 'a' on the first 4 bits from right
+    number <<= 4; //moving the bits 4 times to left to leave space for the 'b' varibale on the first 4 bits from right  
+    number |= b;  //storing 'b' on the first 4 bits from right  
 
-    //impachetare finalizata
+    printf("Packed number: %i\n", number); //numberul impachetat
 
-    printf("Numarul impachetat: %i\n", numar); //numarul impachetat
+    //unpacking
+    int result = 0, result2 = 0;
 
-    //dezpachetare
-    int rez1 = 0, rez2 = 0;
+    result |= (number >> 4);
+    number <<= 4;
+    number >>= 4;
+    result2 |= number;
 
-    rez1 |= (numar >> 4);
-    numar <<= 4;
-    numar >>= 4;
-    rez2 |= numar;
-
-    printf("a = %i, b = %i\n", rez1, rez2);
-    //dezpachetare finalizata
+    printf("a = %i, b = %i\n", result, result2);
 }
