@@ -1,18 +1,16 @@
 #include <stdio.h>
 #include <math.h>
 
-//suma primilor 4 biti (LSB)
+//sum of the first 4 bits (LSB)
 void main()
 {
-    unsigned int suma = 0;
-    int numar;
+    unsigned int sum = 0;
+    int number;
     
-    scanf("%i", &numar);
+    scanf("%i", &number);
 
     for (int i = 0; i < 4; i++)
-    {
-        suma += ((numar >> i) & 1);
-    }
+        sum += ((number >> i) & 1);
 
-    printf("suma = %u", suma);   
+    printf("sum = %u", sum);   
 }
